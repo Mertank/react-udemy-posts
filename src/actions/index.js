@@ -13,8 +13,9 @@ export function fetchPosts() {
     };
 }
 
-export function createPost(data) {
+export function createPost(data, callback) {
     return {
-        type: CREATE_POST
+        type: CREATE_POST,
+        payload: axios.post(`${rootUrl}/posts?key=${apiKey}`, data).then(callback)
     };
 }
